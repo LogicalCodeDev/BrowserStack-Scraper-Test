@@ -1,0 +1,7 @@
+browserstack-local >= 1.2.3
+selenium
+browserstack-sdk
+requests
+beautifulsoup4 
+webdriver-manager
+deep-translator
