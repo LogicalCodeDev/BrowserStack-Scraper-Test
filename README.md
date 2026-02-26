@@ -19,7 +19,7 @@ BrowserStack-Scraper-Test/
 │
 ├── elpais_test.py
 ├── requirements.txt
-├── browserstack.yml        # contains BrowserStack configuration
+├── .env       
 ├── images/                 # auto-created (debug HTML snapshots)
 └── README.md
 ```
@@ -40,10 +40,9 @@ BrowserStack-Scraper-Test/
 
 ### 🔹 Driver & Environment Management
 - **webdriver-manager** — Automatic ChromeDriver management  
-- **BrowserStack Local** — Secure local testing tunnel  
+
 
 ### 🔹 Execution Environments
-- Local Machine (Selenium + ChromeDriver)  
 - BrowserStack Cloud (Desktop + Mobile parallel execution)
 
 
@@ -86,11 +85,13 @@ pip install -r requirements.txt
 
 ### 4️⃣ Configure BrowserStack Credentials
 
-Open the `browserstack.yml` file and replace:
+Open the `.env` file and replace:
 
-```yaml
-userName: YOUR_USERNAME
-accessKey: YOUR_ACCESS_KEY
+```bash
+BROWSERSTACK_USERNAME= YOUR_USERNAME
+BROWSERSTACK_ACCESS_KEY= YOUR_ACCESS_KEY
+BROWSERSTACK_PROJECT_NAME=El Pais Scraper
+BROWSERSTACK_BUILD_NAME=Build 1.0
 ```
 
 with your actual BrowserStack credentials.
@@ -115,21 +116,6 @@ This will:
 - Download cover images (if available)
 - Translate titles to English
 - Perform repeated word analysis
-
----
-
-### 6️⃣ Run on BrowserStack (Parallel Execution)
-
-Make sure `browserstack.yml` is properly configured.
-
-Then execute:
-
-```bash
-browserstack-sdk python elpais_test.py
-```
-
-This will:
-
 - Run tests across multiple desktop and mobile browsers
 - Execute in parallel threads
 - Generate a build under your BrowserStack dashboard
@@ -157,51 +143,4 @@ After execution:
 - Image extraction
 - Parallel cross-browser cloud execution
 - Real-device mobile testing
-
-
-
-
-## ⚙️ browserstack.yml Configuration
-
-```yaml
-userName: XXXXXXXX
-accessKey: XXXXXXXXX
-
-platforms:
-  - os: Windows
-    osVersion: 10
-    browserName: Chrome
-    browserVersion: 120.0
-
-  - os: Windows
-    osVersion: 10
-    browserName: Firefox
-    browserVersion: latest
-
-  - os: Windows
-    osVersion: 10
-    browserName: Edge
-    browserVersion: latest
-
-  - os: OS X
-    osVersion: Monterey
-    browserName: Safari
-    browserVersion: 15.6
-
-  - deviceName: Google Pixel 6
-    osVersion: 12.0
-    browserName: Chrome
-    deviceOrientation: portrait
-
-  - deviceName: iPhone 13
-    osVersion: 15
-    browserName: Safari
-    deviceOrientation: portrait
-
-browserstackLocal: true
-
-buildName: browserstack-build-scrapper
-projectName: BrowserStack Test
-```
-
 

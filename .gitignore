@@ -1,3 +1,4 @@
 browserstack.yml
 images
 log
+.env
